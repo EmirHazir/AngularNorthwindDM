@@ -1,0 +1,17 @@
+<h4 class="pageHeader" style="color:blueviolet">Categories</h4>
+
+<div class="list-group">
+  <!--ilk a bütün ürünler için. onSelectCategory(metoda parametre vermediğimde zaten null geri döndürüyor) [routerLinkActiveOptions]="{exact:true}" sadece routa göre çekiyor bunun için routerLink="products" diye belirtmeliyim   -->
+  <a class="list-group-item categories-item" 
+    (click)="onSelectCategory()" 
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact:true}"
+    routerLink="products">All Products</a>
+    <!--bu a ise diğer kategoriler için routerLink="products/{{category.seoUrl}}" apideki seo çalışmasını sayfadaki linke basar. metodu zaten incele categoryName e göre cekilir  -->
+  <a class="list-group-item categories-item"
+  *ngFor="let category of categories" 
+  routerLink="products/{{category.seoUrl}}"
+  routerLinkActive="active"
+  (click)="onSelectCategory()">{{category.categoryName}}
+  </a>
+</div>
